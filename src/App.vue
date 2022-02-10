@@ -1,19 +1,22 @@
 <template>
   <div id="app">
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/7/75/Spotify_icon.png"
-      alt=""
-    />
+    <Header />
   </div>
 </template>
 
 <script>
+import Header from "./components/Header.vue";
 export default {
   name: "App",
-  components: {},
+  components: {
+    Header,
+  },
 };
 </script>
 
 <style lang="scss">
 @import "./assets/scss/style.scss";
+img {
+  max-width: 100%;
+}
 </style>
