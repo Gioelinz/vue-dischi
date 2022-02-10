@@ -1,9 +1,20 @@
 <template>
   <main>
     <div class="container">
-      <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5">
+      <div
+        class="
+          row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5
+          gy-3
+          gx-4
+        "
+      >
         <div class="col" v-for="disc in discs" :key="disc.title">
-          {{ disc.author }}
+          <DiscsCard
+            :author="disc.author"
+            :poster="disc.poster"
+            :title="disc.title"
+            :year="disc.year"
+          />
         </div>
       </div>
     </div>
@@ -13,8 +24,13 @@
 <script>
 import axios from "axios";
 
+import DiscsCard from "./DiscsCard.vue";
+
 export default {
   name: "Main",
+  components: {
+    DiscsCard,
+  },
   data() {
     return {
       discs: [],
@@ -36,4 +52,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+main {
+  height: calc(100vh - 90px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 20px 0;
+  overflow: auto;
+}
 </style>
