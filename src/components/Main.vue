@@ -60,7 +60,7 @@ export default {
 
 <style lang="scss" scoped>
 main {
-  height: calc(100vh - 90px);
+  height: calc(100vh - 70px);
   display: flex;
   flex-wrap: wrap;
   align-items: center;

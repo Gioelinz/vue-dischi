@@ -17,9 +17,9 @@ export default {
 @import "../assets/scss/style.scss";
 header {
   background-color: $primary_color;
-  height: 90px;
+  height: 70px;
   img {
-    height: 70px;
+    height: 50px;
   }
 }
 </style>
