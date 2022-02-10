@@ -1,5 +1,5 @@
 <template>
-  <div class="card-disc text-center">
+  <div class="card-disc text-center" role="button">
     <img :src="poster" :alt="author" />
     <h4 class="text-white mt-3">{{ title.toUpperCase() }}</h4>
     <p class="text-secondary m-0 pt-2">{{ author }}</p>
