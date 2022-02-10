@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/_vars.scss";
+@import "../assets/scss/style.scss";
 header {
   background-color: $primary_color;
   img {
