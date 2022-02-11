@@ -5,13 +5,19 @@
       alt="Logo"
     />
     <div class="filters">
-      <select id="filtergenre" @change="test" v-model="key">
+      <select
+        id="filtergenre"
+        @change="$emit('filter-genre', key)"
+        v-model="key"
+        :value="key"
+      >
+        <option value="Tutti">Tutti</option>
         <option
-          v-for="(disc, index) in noDoubleGenre()"
+          v-for="(genre, index) in noDoubleGenre()"
           :key="index"
-          :value="disc"
+          :value="genre"
         >
-          {{ disc }}
+          {{ genre }}
         </option>
       </select>
     </div>
@@ -25,14 +31,10 @@ export default {
 
   data() {
     return {
-      key: "",
-      discsGenre: [],
+      key: "Tutti",
     };
   },
   methods: {
-    test() {
-      console.log(event.target.value, this.key);
-    },
     noDoubleGenre() {
       const genres = [];
       this.discs.forEach((d) => {

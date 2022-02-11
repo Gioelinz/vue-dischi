@@ -8,7 +8,7 @@
           gx-4
         "
       >
-        <div class="col" v-for="disc in discs" :key="disc.title">
+        <div class="col" v-for="disc in filteredCards" :key="disc.title">
           <Loader v-if="isLoading" msg="Discs Loading..." />
           <DiscsCard
             v-else
@@ -33,7 +33,16 @@ export default {
     DiscsCard,
     Loader,
   },
-  props: ["isLoading", "discs"],
+  props: ["isLoading", "discs", "filterGenre"],
+  computed: {
+    filteredCards() {
+      const filter = this.filterGenre;
+      return this.discs.filter((disc) => {
+        if (disc.genre == filter || filter == "Tutti" || filter == "")
+          return true;
+      });
+    },
+  },
 };
 </script>
 

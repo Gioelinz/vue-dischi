@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header :discs="discs" />
-    <Main :is-loading="isLoading" :discs="discs" />
+    <Header :discs="discs" @filter-genre="test" />
+    <Main :is-loading="isLoading" :discs="discs" :filter-genre="term" />
   </div>
 </template>
 
@@ -21,6 +21,7 @@ export default {
     return {
       isLoading: false,
       discs: [],
+      term: "",
     };
   },
   methods: {
@@ -34,6 +35,9 @@ export default {
         .finally(() => {
           this.isLoading = false;
         });
+    },
+    test(key) {
+      this.term = key;
     },
   },
   mounted() {
