@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header :discs="discs" />
     <Main :is-loading="isLoading" :discs="discs" />
   </div>
 </template>

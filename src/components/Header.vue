@@ -6,7 +6,13 @@
     />
     <div class="filters">
       <select id="filtergenre" @change="test" v-model="key">
-        <option value="rock">Rock</option>
+        <option
+          v-for="(disc, index) in noDoubleGenre()"
+          :key="index"
+          :value="disc"
+        >
+          {{ disc }}
+        </option>
       </select>
     </div>
   </header>
@@ -15,17 +21,24 @@
 <script>
 export default {
   name: "Header",
+  props: ["discs"],
+
   data() {
     return {
       key: "",
+      discsGenre: [],
     };
   },
   methods: {
     test() {
       console.log(event.target.value, this.key);
     },
-    test1() {
-      console.log("clicked");
+    noDoubleGenre() {
+      const genres = [];
+      this.discs.forEach((d) => {
+        if (!genres.includes(d.genre)) genres.push(d.genre);
+      });
+      return genres;
     },
   },
 };
