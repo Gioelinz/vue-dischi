@@ -9,14 +9,14 @@
         "
       >
         <div class="col" v-for="disc in discs" :key="disc.title">
+          <Loader v-if="isLoading" msg="Discs Loading..." />
           <DiscsCard
-            v-if="!isLoading"
+            v-else
             :author="disc.author"
             :poster="disc.poster"
             :title="disc.title"
             :year="disc.year"
           />
-          <Loader v-else msg="Discs Loading..." />
         </div>
       </div>
     </div>
@@ -24,8 +24,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
 import DiscsCard from "./DiscsCard.vue";
 import Loader from "./Loader.vue";
 
@@ -35,26 +33,7 @@ export default {
     DiscsCard,
     Loader,
   },
-  data() {
-    return {
-      discs: [],
-      isLoading: false,
-    };
-  },
-  methods: {
-    getApiDiscs() {
-      this.isLoading = true;
-      axios
-        .get("https://flynn.boolean.careers/exercises/api/array/music")
-        .then((res) => {
-          this.discs = res.data.response;
-          this.isLoading = false;
-        });
-    },
-  },
-  mounted() {
-    this.getApiDiscs();
-  },
+  props: ["isLoading", "discs"],
 };
 </script>
 
