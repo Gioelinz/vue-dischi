@@ -5,6 +5,9 @@
       alt="Logo"
     />
     <div class="filters">
+      <label class="me-2 text-black fs-6" for="filtergenre"
+        >Seleziona genere:</label
+      >
       <select
         id="filtergenre"
         @change="$emit('filter-genre', key)"
