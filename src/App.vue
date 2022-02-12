@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header :discs="discs" @filter-genre="test" />
+    <Header :discs="discs" @filter-genre="newTerm" />
     <Main :is-loading="isLoading" :discs="discs" :filter-genre="term" />
   </div>
 </template>
@@ -33,10 +33,12 @@ export default {
           this.discs = res.data.response;
         })
         .finally(() => {
-          this.isLoading = false;
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 3000);
         });
     },
-    test(key) {
+    newTerm(key) {
       this.term = key;
     },
   },
